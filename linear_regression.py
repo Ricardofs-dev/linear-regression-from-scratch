@@ -36,7 +36,13 @@ class LinearRegression:
         4. Compute error
         5. Update weight and bias
         """
-        pass  # to be implemented
+        # Number of training samples
+        n_samples = X.shape[0]
+
+        # Initialize parameters
+        self.weight = 0.0
+        self.bias = 0.0
+
 
     def predict(self, X):
         """
