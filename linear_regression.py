@@ -47,8 +47,7 @@ class LinearRegression:
         for _ in range(self.n_iterations):
             # Compute predictions
             y_pred = self.weight * X + self.bias
-
-            # Compute error
+            errors = y_pred - y
             
             # Update parameters
 
