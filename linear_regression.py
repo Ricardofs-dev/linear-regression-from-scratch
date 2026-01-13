@@ -43,6 +43,13 @@ class LinearRegression:
         self.weight = 0.0
         self.bias = 0.0
 
+        # Gradient Descent loop
+        for _ in range(self.n_iterations):
+            # Compute predictions
+            # Compute error
+            # Update parameters
+            pass
+
 
     def predict(self, X):
         """
