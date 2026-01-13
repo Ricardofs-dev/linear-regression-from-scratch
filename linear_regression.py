@@ -46,8 +46,12 @@ class LinearRegression:
         # Gradient Descent loop
         for _ in range(self.n_iterations):
             # Compute predictions
+            y_pred = self.weight * X + self.bias
+
             # Compute error
+            
             # Update parameters
+
             pass
 
 
