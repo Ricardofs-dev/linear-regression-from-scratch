@@ -42,10 +42,10 @@ Como a função de custo da regressão linear é convexa, o algoritmo converge p
 1. Clonar o repositório:
 ```bash
 git clone <url-do-repositorio>
-
 pip install -r requirements.txt
-
 python example.py
+
+Este projeto utiliza apenas bibliotecas básicas (`numpy` e `matplotlib`), não recorrendo a algoritmos de Machine Learning pré-implementados.
 
 
 
