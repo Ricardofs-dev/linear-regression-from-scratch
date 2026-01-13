@@ -63,8 +63,6 @@ class LinearRegression:
     def predict(self, X):
         """
         Predict output values for given input data X.
-
-        Returns:
-        - Predicted values
         """
-        pass  # to be implemented
+        return self.weight * X + self.bias
+
