@@ -49,7 +49,13 @@ class LinearRegression:
             y_pred = self.weight * X + self.bias
             errors = y_pred - y
             
+            # Compute gradients
+            dw = (1 / n_samples) * np.sum(errors * X)
+            db = (1 / n_samples) * np.sum(errors)
+
             # Update parameters
+            self.weight -= self.learning_rate * dw
+            self.bias -= self.learning_rate * db
 
             pass
 
