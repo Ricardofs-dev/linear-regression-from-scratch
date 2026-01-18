@@ -3,20 +3,20 @@ import numpy as np
 
 class LinearRegression:
     """
-    Linear Regression implemented from scratch using Gradient Descent.
+    Regressão Linear utilizando Gradiente Descendente.
 
-    This class allows:
-    - fitting a linear model to data
-    - predicting new values
+    Esta classe permite:
+    - Ajustar um modelo linear aos dados
+    - Prever novos valores com base no modelo treinado
     """
 
     def __init__(self, learning_rate=0.01, n_iterations=1000):
         """
-        Initialize the model parameters.
+        Inicializa os parâmetros do modelo.
 
-        Parameters:
-        - learning_rate: step size for gradient descent
-        - n_iterations: number of iterations for training
+        Parâmetros:
+        - learning_rate: taxa de aprendizagem do gradiente descendente
+        - n_iterations: número máximo de iterações de treino
         """
         self.learning_rate = learning_rate
         self.n_iterations = n_iterations
@@ -25,35 +25,51 @@ class LinearRegression:
         self.weight = None
         self.bias = None
 
-    def fit(self, X, y):
+    def fit(self, X, y, min_error=None, min_delta=None):
         """
-        Train the linear regression model using gradient descent.
+        Treina o modelo de regressão linear utilizando gradiente descendente.
 
-        Steps (high-level):
-        1. Initialize weight and bias
-        2. Loop over the number of iterations
-        3. Compute predictions
-        4. Compute error
-        5. Update weight and bias
+        Passos (alto nível):
+        1. Inicializar o peso e o bias
+        2. Iterar durante um número máximo de iterações
+        3. Calcular as previsões
+        4. Calcular o erro
+        5. Atualizar o peso e o bias
         """
-        # Number of training samples
+        # Número de amostras de treino
         n_samples = X.shape[0]
 
-        # Initialize parameters
+        # Inicialização dos parâmetros
         self.weight = 0.0
         self.bias = 0.0
 
+        # Erro da iteração anterior (para paragem por variação mínima)
+        previous_error = float("inf")
+        
         # Gradient Descent loop
         for _ in range(self.n_iterations):
-            # Compute predictions
+            # Previsões do modelo
             y_pred = self.weight * X + self.bias
             errors = y_pred - y
+
+            # Erro quadrático médio (MSE)
+            mse = np.mean(errors ** 2)
+
+            # Condição de paragem por erro mínimo
+            if min_error is not None and mse <= min_error:
+                break
+            # Condição de paragem por variação mínima do erro
+            if min_delta is not None and abs(previous_error - mse) < min_delta:
+                break
             
-            # Compute gradients
+            previous_error = mse
+
+            
+            # Cálculo dos gradientes
             dw = (1 / n_samples) * np.sum(errors * X)
             db = (1 / n_samples) * np.sum(errors)
 
-            # Update parameters
+            # Atualização dos parâmetros
             self.weight -= self.learning_rate * dw
             self.bias -= self.learning_rate * db
 
@@ -61,8 +77,8 @@ class LinearRegression:
 
 
     def predict(self, X):
-        """
-        Predict output values for given input data X.
-        """
-        return self.weight * X + self.bias
+       """
+       Prevê os valores de saída para os dados de entrada X.
+       """
+       return self.weight * X + self.bias
 

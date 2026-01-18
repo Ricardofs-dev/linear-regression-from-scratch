@@ -2,34 +2,32 @@ import numpy as np
 import matplotlib.pyplot as plt
 from linear_regression import LinearRegression
 
-# Set random seed for reproducibility
+# Definir seed aleatória
 np.random.seed(42)
 
-# Generate synthetic housing data
-# X represents house size (e.g., in square meters)
+# Gerar dados sintéticos de habitação
+# X representa o tamanho da casa (por exemplo, em metros quadrados)
 X = np.random.rand(50, 1) * 100
 
-# y represents house price
+# y representa o preço da casa (por exemplo, em milhares de euros)
 y = 2 * X.squeeze() + 10 + np.random.randn(50) * 10
 
-# Create and train the linear regression model
+# # Criar e treinar o modelo de regressão linear
 model = LinearRegression(learning_rate=0.00001, n_iterations=1000)
-model.fit(X, y)
+model.fit(X, y, min_error=1.0, min_delta=0.0001)
 
-# Plot the synthetic data
+# Plot dos dados e da linha de regressão
 plt.figure()
 plt.scatter(X, y)
 plt.xlabel("House size")
 plt.ylabel("House price")
 plt.title("Synthetic housing data")
 
-# Predict values using the trained model
+# Prever valores utilizando o modelo treinado
 y_pred = model.predict(X)
 
-# Sort X for a clean regression line
+# Ordenar X para desenhar uma linha de regressão contínua
 idx = np.argsort(X[:, 0])
 plt.plot(X[idx, 0], y_pred[idx], color="red")
 
 plt.show(block=True)
-
-
