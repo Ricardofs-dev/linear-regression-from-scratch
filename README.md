@@ -2,7 +2,7 @@
 
 Este projeto implementa um modelo de **Regressão Linear**, utilizando apenas a biblioteca `numpy`.
 O objetivo é demonstrar uma implementação clara e educativa do algoritmo, sem recorrer a bibliotecas
-de Machine Learning que encapsulem o processo (como scikit-learn).
+de Machine Learning (como scikit-learn).
 
 O caso de estudo utilizado consiste em **prever o preço de casas com base no tamanho** (por exemplo, área em m²), recorrendo a **dados sintéticos gerados aleatoriamente** com uma relação aproximadamente linear entre as variáveis.
 

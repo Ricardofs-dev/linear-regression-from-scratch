@@ -21,7 +21,7 @@ class LinearRegression:
         self.learning_rate = learning_rate
         self.n_iterations = n_iterations
 
-        # Model parameters (to be learned during training)
+        # Parâmetros do modelo (a serem aprendidos durante o treino)
         self.weight = None
         self.bias = None
 
@@ -29,9 +29,9 @@ class LinearRegression:
         """
         Treina o modelo de regressão linear utilizando gradiente descendente.
 
-        Passos (alto nível):
+        Passos do algoritmo:
         1. Inicializar o peso e o bias
-        2. Iterar durante um número máximo de iterações
+        2. Iterar para um número fixo de iterações ou até atingir o critério de paragem
         3. Calcular as previsões
         4. Calcular o erro
         5. Atualizar o peso e o bias
